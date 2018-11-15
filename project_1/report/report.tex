@@ -100,6 +100,8 @@
 \begin{lstlisting}[language=C,frame=single]
  void *client(void *arg)
  {
+     int num = *(int *)arg      /*`读取顾客编号num`*/
+
      sleep(enter_time);         /*`睡眠enter\_time后进入银行`*/
      enter_time = gettime();    /*`记录进入银行的时间`*/
      
@@ -133,6 +135,8 @@
 \begin{lstlisting}[language=C,frame=single]
  void *teller(void *arg)
  {
+     int num = *(int *)arg           /*`读取柜员编号num`*/
+     
      lock(&mutex_nts);               /*`在mutex\_nts的保护下`*/
      nts = num_to_serve;             /*`读取num\_to\_serve的值`*/
      num_to_serve--;
